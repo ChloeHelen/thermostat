@@ -20,6 +20,11 @@ describe("Thermostat", function() {
       thermostat.temperature = thermostat.POWER_SAVING_MAX_TEMP;
       expect(function(){thermostat.up()}).toThrowError("At maximum for this mode");
     });
+    it("Should not increase past 35 when not power saving", function () {
+      thermostat.temperature = thermostat.MAX_TEMP;
+      thermostat.powerSaving = false;
+      expect(function(){thermostat.up()}).toThrowError("At maximum");
+    });
   });
 
   describe('#down', function() {

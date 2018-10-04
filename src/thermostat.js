@@ -3,6 +3,7 @@ function Thermostat() {
   this.powerSaving = true;
   this.MINIMUM_TEMPERATURE = 10;
   this.POWER_SAVING_MAX_TEMP = 25;
+  this.MAX_TEMP = 32;
 }
 
 Thermostat.prototype.getTemperature = function() {
@@ -12,6 +13,8 @@ Thermostat.prototype.getTemperature = function() {
 Thermostat.prototype.up = function() {
   if (this.powerSaving && this.temperature >= this.POWER_SAVING_MAX_TEMP) {
     throw new Error("At maximum for this mode");
+  } else if (!this.powerSaving && this.temperature >= this.MAX_TEMP) {
+    throw new Error("At maximum");
   } else {
     this.temperature++;
   }
