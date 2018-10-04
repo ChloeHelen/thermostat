@@ -29,4 +29,15 @@ describe("Thermostat", function() {
     });
   });
 
+  describe('#powerSaving', function() {
+    it("Should be on by default", function () {
+      expect(thermostat.powerSaving).toEqual(true);
+    });
+    it("Can change between on and off", function () {
+      thermostat.swapPowerSaving();
+      expect(thermostat.powerSaving).toEqual(false);
+    });
+  });
+
+
 });
