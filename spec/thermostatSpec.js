@@ -23,6 +23,10 @@ describe("Thermostat", function() {
       thermostat.down();
       expect(thermostat.getTemperature()).toEqual(19);
     });
+    it("Will not decrease past minimum temperature", function () {
+      thermostat.temperature = thermostat.MINIMUM_TEMPERATURE;
+      expect(function(){thermostat.down()}).toThrowError("At minimum");
+    });
   });
 
 });
