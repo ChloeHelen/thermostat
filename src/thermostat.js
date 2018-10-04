@@ -1,7 +1,8 @@
 function Thermostat() {
   this.temperature = 20;
-  this.MINIMUM_TEMPERATURE = 10;
   this.powerSaving = true;
+  this.MINIMUM_TEMPERATURE = 10;
+  this.POWER_SAVING_MAX_TEMP = 25;
 }
 
 Thermostat.prototype.getTemperature = function() {
@@ -9,7 +10,11 @@ Thermostat.prototype.getTemperature = function() {
 };
 
 Thermostat.prototype.up = function() {
-  this.temperature++;
+  if (this.powerSaving && this.temperature >= this.POWER_SAVING_MAX_TEMP) {
+    throw new Error("At maximum for this mode");
+  } else {
+    this.temperature++;
+  }
 };
 
 Thermostat.prototype.down = function() {
@@ -27,11 +32,3 @@ Thermostat.prototype.swapPowerSaving = function() {
     this.powerSaving = true;
   }
 };
-
-// Thermostat.prototype.switchPowerSaving = function() {
-//   if this.powerSaving {
-//     this.powerSaving = false;
-//   } else {
-//     this.powerSaving = true;
-//   }
-// };

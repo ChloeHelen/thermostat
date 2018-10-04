@@ -16,6 +16,10 @@ describe("Thermostat", function() {
       thermostat.up();
       expect(thermostat.getTemperature()).toEqual(21);
     });
+    it("Should not increase past 25 when in power saving", function () {
+      thermostat.temperature = thermostat.POWER_SAVING_MAX_TEMP;
+      expect(function(){thermostat.up()}).toThrowError("At maximum for this mode");
+    });
   });
 
   describe('#down', function() {
@@ -36,6 +40,11 @@ describe("Thermostat", function() {
     it("Can change between on and off", function () {
       thermostat.swapPowerSaving();
       expect(thermostat.powerSaving).toEqual(false);
+    });
+    it("Can change between on and off", function () {
+      thermostat.swapPowerSaving();
+      thermostat.swapPowerSaving();
+      expect(thermostat.powerSaving).toEqual(true);
     });
   });
 
