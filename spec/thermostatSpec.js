@@ -53,5 +53,12 @@ describe("Thermostat", function() {
     });
   });
 
+  describe('#reset', function() {
+    it("Should restore the temperature to default", function () {
+      thermostat.temperature = 25
+      thermostat.resetTemp();
+      expect(thermostat.temperature).toEqual(thermostat.DEFAULT_TEMPERATURE);
+    });
+  });
 
 });
