@@ -7,7 +7,15 @@ describe("Thermostat", function() {
 
   describe('#temperature', function() {
     it("Should have an initial temperature of 20 degrees", function () {
-      expect(thermostat.temperature()).toEqual(20);
+      expect(thermostat.getTemperature()).toEqual(20);
     });
   });
+
+  describe('#up', function() {
+    it("Should increase the temperature by 1", function () {
+      thermostat.up();
+      expect(thermostat.getTemperature()).toEqual(21);
+    });
+  });
+
 });
