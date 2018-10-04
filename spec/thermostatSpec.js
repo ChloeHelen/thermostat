@@ -18,4 +18,11 @@ describe("Thermostat", function() {
     });
   });
 
+  describe('#down', function() {
+    it("Should decrease the temperature by 1", function () {
+      thermostat.down();
+      expect(thermostat.getTemperature()).toEqual(19);
+    });
+  });
+
 });
