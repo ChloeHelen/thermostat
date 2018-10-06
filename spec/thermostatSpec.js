@@ -7,14 +7,14 @@ describe("Thermostat", function() {
 
   describe('#temperature', function() {
     it("Should have an initial temperature of 20 degrees", function () {
-      expect(thermostat.getTemperature()).toEqual(20);
+      expect(thermostat.getTemperature()).toEqual(thermostat.DEFAULT_TEMPERATURE);
     });
   });
 
   describe('#up', function() {
     it("Should increase the temperature by 1", function () {
       thermostat.up();
-      expect(thermostat.getTemperature()).toEqual(21);
+      expect(thermostat.getTemperature()).toEqual(thermostat.DEFAULT_TEMPERATURE + 1);
     });
     it("Should not increase past 25 when in power saving", function () {
       thermostat.temperature = thermostat.POWER_SAVING_MAX_TEMP;
@@ -30,7 +30,7 @@ describe("Thermostat", function() {
   describe('#down', function() {
     it("Should decrease the temperature by 1", function () {
       thermostat.down();
-      expect(thermostat.getTemperature()).toEqual(19);
+      expect(thermostat.getTemperature()).toEqual(thermostat.DEFAULT_TEMPERATURE - 1);
     });
     it("Will not decrease past minimum temperature", function () {
       thermostat.temperature = thermostat.MINIMUM_TEMPERATURE;
