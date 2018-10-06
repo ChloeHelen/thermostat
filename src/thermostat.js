@@ -40,3 +40,13 @@ Thermostat.prototype.swapPowerSaving = function() {
 Thermostat.prototype.resetTemp = function() {
     this.temperature = this.DEFAULT_TEMPERATURE;
 };
+
+Thermostat.prototype.usage = function() {
+  if (this.temperature < 18) {
+    return "low";
+  } else if (this.temperature > 25) {
+    return "high";
+  } else {
+    return "medium";
+  }
+};
