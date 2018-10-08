@@ -17,7 +17,7 @@ Thermostat.prototype.up = function() {
   } else if (!this.powerSaving && this.temperature >= this.MAX_TEMP) {
     throw new Error("At maximum");
   } else {
-    this.temperature++;
+    return this.temperature++;
   }
 };
 
@@ -35,6 +35,7 @@ Thermostat.prototype.swapPowerSaving = function() {
   } else {
     this.powerSaving = true;
   }
+  return this.powerSaving;
 };
 
 Thermostat.prototype.resetTemp = function() {

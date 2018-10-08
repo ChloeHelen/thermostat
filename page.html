@@ -1,9 +1,43 @@
 <head>
-<script src="src/thermostat.js">
+<script src="src/thermostat.js"></script>
+<script src="jquery.js"></script>
+<script>
+
+$(document).ready(function() {
+  thermostat = new Thermostat();
+  $('#temperature').text(thermostat.getTemperature());
+
+  $('#up').click(function() { // event listener
+    thermostat.up(); // update model
+    $('#temperature').text(thermostat.getTemperature()); // update view
+  });
+
+  $('#down').click(function() { // event listener
+    thermostat.down(); // update model
+    $('#temperature').text(thermostat.getTemperature()); // update view
+  });
+
+  $('#swap').click(function() { // event listener
+    thermostat.swapPowerSaving();
+    alert("Power saving mode is: " + thermostat.powerSaving); // update model
+     // update view
+  });
+
+  $('#reset').click(function() { // event listener
+    thermostat.resetTemp(); // update model
+    $('#temperature').text(thermostat.getTemperature()); // update view
+  });
+
+  $('#usage').click(function() { // event listener
+    alert("Current usage: " + thermostat.usage()); // update model// update view
+  });
+});
+
 </script>
+
 </head>
 
-<p> Temperature </p><p> Holding </p>
+<p> Temperature </p><p id=temperature>  </p>
 <button type="button" id="get"> Get </button>
 <button type="button" id="up"> Up </button>
 <button type="button" id="down"> Down </button>
